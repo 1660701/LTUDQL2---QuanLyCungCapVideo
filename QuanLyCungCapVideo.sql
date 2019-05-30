@@ -56,7 +56,7 @@ create table YEUTHICH
 	LinkVideo varchar(50),
 	LinkPoster  varchar(50),
 	IDVideo varchar(10) ,
-	CONSTRAINT YEUTHICH_pk PRIMARY KEY (IDVideo,LinkVideo)
+	
 
 )
 alter table THANHTOAN
@@ -65,12 +65,12 @@ alter table THANHTOAN
 add constraint FK_TT_DV foreign key (IDDV) references DICHVU(IDDV)
 alter table YEUTHICH
 add constraint FK_YT_TK foreign key (IDTK) references TAIKHOAN(IDTK)
-
-alter table YEUTHICH
-add constraint FK_YT_VD foreign key (LinkVideo,IDVideo) references VIDEO(LinkVideo,IDVideo)
-
-
 alter table VIDEO
 add constraint FK_VD_TL foreign key (IDTL) references THELOAI(IDTL)
 alter table TAIKHOAN
 add constraint FK_TK_Q foreign key (IDQuyen) references Quyen(IDQuyen)
+
+
+alter table YEUTHICH
+add constraint FK_YT_VD foreign key (LinkVideo,IDVideo) references VIDEO(LinkVideo,IDVideo)
+
