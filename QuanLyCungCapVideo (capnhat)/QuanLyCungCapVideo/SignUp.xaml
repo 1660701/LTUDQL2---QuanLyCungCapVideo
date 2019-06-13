@@ -1,0 +1,90 @@
+﻿<Window x:Class="QuanLyCungCapVideo.SignUp"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuanLyCungCapVideo"
+        xmlns:uc="clr-namespace:QuanLyCungCapVideo.UserControl1"
+        mc:Ignorable="d"
+        
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+         Name="SignUpWindow"
+        DataContext="{StaticResource SignUpVM}"
+               
+        Title="SignUp" Height="650" Width="500">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="60" ></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <uc:ControlBarUC Tag="{Binding Title, ElementName=SignUpWindow}"></uc:ControlBarUC>
+        </Grid>
+        <Grid Grid.Row="1">
+            <TextBlock Width="140" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="35" FontFamily="Showcard Gothic" Foreground="#DD000000">Sign Up</TextBlock>
+        </Grid>
+        <Grid Grid.Row="2">
+            <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth4" Padding="32" HorizontalAlignment="Center" VerticalAlignment="Top" Height="530" Width="410" Margin="45,0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition ></RowDefinition>
+                        <RowDefinition ></RowDefinition>
+                        <RowDefinition ></RowDefinition>
+                        <RowDefinition ></RowDefinition>
+                        <RowDefinition ></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <TextBox Text="{Binding TenND, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"  Margin="25 15 25 15"  materialDesign:HintAssist.Hint="Username" Style="{StaticResource MaterialDesignFloatingHintTextBox}" >
+                        </TextBox>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <TextBox Text="{Binding MatKhau, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Margin="25 15 25 15"  materialDesign:HintAssist.Hint="Password" Style="{StaticResource MaterialDesignFloatingHintTextBox}" >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="TextChanged">
+                                    <i:InvokeCommandAction Command="{Binding PasswordChangedCommand}" 
+                                                           CommandParameter="{Binding ElementName=txtpass}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </TextBox>
+                    </Grid>
+                    <Grid Grid.Row="2">
+                        <TextBox Text="{Binding Email, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Margin="25 15 25 15"  materialDesign:HintAssist.Hint="Email" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    </Grid>
+                    <Grid Grid.Row="3">
+                        <TextBox Text="{Binding DienThoai, UpdateSourceTrigger=PropertyChanged}" Margin="25 15 25 15"  materialDesign:HintAssist.Hint="Phone Number" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    </Grid>
+
+
+                    <Grid Grid.Row="4">
+                        <CheckBox  x:Name="DisplaySelectedItemCheckBox" IsThreeState="False" Margin="20 15 20 15">
+                            <TextBlock Style="{StaticResource MaterialDesignSubheadingTextBlock}">
+                               I accept...
+                            </TextBlock>
+                        </CheckBox>
+                    </Grid>
+                    <Grid Grid.Row="5">
+                        <Button Command="{Binding SignUpCommand}" 
+                                CommandParameter="{Binding ElementName=SignUpWindow}"
+                                Background="#DD000000" Width="120" Height="40" VerticalAlignment="Center" Style="{StaticResource MaterialDesignRaisedButton}" >
+                            Sign Up
+                        </Button>
+                    </Grid>
+                </Grid>
+            </materialDesign:Card>
+        </Grid>
+    </Grid>
+
+</Window>
