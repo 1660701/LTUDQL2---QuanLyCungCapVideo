@@ -1,0 +1,108 @@
+﻿<Window x:Class="QuanLyCungCapVideo.GoiCuoc"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuanLyCungCapVideo"
+        mc:Ignorable="d"
+        DataContext="{StaticResource GoiCuocVM}"
+        
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:uc="clr-namespace:QuanLyCungCapVideo.UserControl1"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        Name="GoiCuocWindow"
+        
+        Title="GoiCuoc" Height="500" Width="450 ">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="60" ></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <uc:ControlBarUC Tag="{Binding Title, ElementName=GoiCuocWindow}"></uc:ControlBarUC>
+        </Grid>
+        <Grid Grid.Row="1" Background="#FF231F20">
+            <TextBlock Width="187" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="35" FontFamily="Serpentine" Foreground="White" Margin="155,10,108,10">Gói Cước</TextBlock>
+        </Grid>
+        <Grid Grid.Row="2" Background="#FF231F20">
+            <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth4" Padding="32" HorizontalAlignment="Center" VerticalAlignment="Top" Height="350" Width="300" Margin="75,0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition ></RowDefinition>
+                        <RowDefinition ></RowDefinition>
+                        <RowDefinition ></RowDefinition>
+                        <RowDefinition ></RowDefinition>
+                        <RowDefinition ></RowDefinition>
+
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <TextBox Margin="10"
+                                 materialDesign:HintAssist.Hint="Tên người dùng"                               
+                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                                 Text="{Binding TenND, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
+                                 />
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <TextBox Margin="10"
+                                 materialDesign:HintAssist.Hint="Mật khẩu"                               
+                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                                 Text="{Binding MatKhau, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
+                                 />
+                    </Grid>
+                    <Grid Grid.Row="2">
+                        <ComboBox Text="{Binding GoiCuoc, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Margin="10" materialDesign:HintAssist.Hint="Gói cước" Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                                  materialDesign:HintAssist.Foreground="Black"
+                                 materialDesign:TextFieldAssist.UnderlineBrush="Black">
+                            <ComboBoxItem ToolTip="1 month, 99000 VND">
+                                BASIC
+                            </ComboBoxItem>
+                            <ComboBoxItem ToolTip="6 months, 399000 VND">
+                                STANDARD
+                            </ComboBoxItem>
+                            <ComboBoxItem ToolTip="1 year, 599000 VND">
+                                PREMIUM
+                            </ComboBoxItem>
+
+                        </ComboBox>
+                    </Grid>
+                    <Grid Grid.Row="3">
+                        <ComboBox Text="{Binding HTTT, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Margin="10" materialDesign:HintAssist.Hint="Hình thức thanh toán" Style="{StaticResource MaterialDesignFloatingHintComboBox}" Grid.ColumnSpan="2"
+                                  materialDesign:HintAssist.Foreground="Black"
+                                 materialDesign:TextFieldAssist.UnderlineBrush="Black">
+                            <ComboBoxItem >
+                                Credit Card
+                            </ComboBoxItem>
+                            <ComboBoxItem >
+                                MoMo
+                            </ComboBoxItem>
+                            <ComboBoxItem >
+                                Thẻ cào điện thoại
+                            </ComboBoxItem>
+                        </ComboBox>
+                    </Grid>
+                    <Grid Grid.Row="4" Margin="0,10,0,0">
+                        <Button Command="{Binding GoiCuocCommand}"
+                                CommandParameter="{Binding ElementName=GoiCuocWindow}"
+                                Background="#FF231F20" Width="140" Height="40" 
+                                materialDesign:ShadowAssist.ShadowDepth="Depth4"
+                                VerticalAlignment="Center" Style="{StaticResource MaterialDesignRaisedButton}" >
+                            <TextBlock Style="{StaticResource MaterialDesignTitleTextBlock}">
+                                        Xác nhận
+                            </TextBlock>
+                        </Button>
+                    </Grid>
+                </Grid>
+            </materialDesign:Card>
+        </Grid>
+    </Grid>
+</Window>
