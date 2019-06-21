@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QuanLyCungCapVideoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="TAIKHOAN">
+    <Key>
+      <PropertyRef Name="IDTK" />
+    </Key>
+    <Property Name="IDTK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenND" Type="nvarchar" MaxLength="100" />
+    <Property Name="MatKhau" Type="varchar" MaxLength="50" />
+    <Property Name="DienThoai" Type="varchar" MaxLength="50" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="IDQuyen" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="THANHTOAN">
+    <Key>
+      <PropertyRef Name="IDThanhToan" />
+    </Key>
+    <Property Name="IDThanhToan" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HTTT" Type="nvarchar" MaxLength="50" />
+    <Property Name="NgayTT" Type="datetime" />
+    <Property Name="NgayKT" Type="datetime" />
+    <Property Name="GoiCuoc" Type="nvarchar" MaxLength="100" />
+    <Property Name="TenND" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="THELOAI">
+    <Key>
+      <PropertyRef Name="IDTL" />
+    </Key>
+    <Property Name="IDTL" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenTL" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="VIDEO">
+    <Key>
+      <PropertyRef Name="IDVideo" />
+      <PropertyRef Name="LinkVideo" />
+    </Key>
+    <Property Name="IDVideo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenVideo" Type="nvarchar" MaxLength="100" />
+    <Property Name="IDTL" Type="int" />
+    <Property Name="QuocGia" Type="nvarchar" MaxLength="50" />
+    <Property Name="ThoiLuong" Type="varchar" MaxLength="30" />
+    <Property Name="DaoDien" Type="nvarchar" MaxLength="50" />
+    <Property Name="LuotXem" Type="int" />
+    <Property Name="LinkVideo" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="LinkPoster" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="YEUTHICH">
+    <Key>
+      <PropertyRef Name="IDYT" />
+    </Key>
+    <Property Name="IDYT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDTK" Type="int" />
+    <Property Name="LinkVideo" Type="nvarchar" MaxLength="200" />
+    <Property Name="LinkPoster" Type="nvarchar" MaxLength="200" />
+    <Property Name="IDVideo" Type="int" />
+  </EntityType>
+  <Association Name="FK_VD_TL">
+    <End Role="THELOAI" Type="Self.THELOAI" Multiplicity="0..1" />
+    <End Role="VIDEO" Type="Self.VIDEO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="THELOAI">
+        <PropertyRef Name="IDTL" />
+      </Principal>
+      <Dependent Role="VIDEO">
+        <PropertyRef Name="IDTL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_YEUTHICH_VIDEO">
+    <End Role="VIDEO" Type="Self.VIDEO" Multiplicity="0..1" />
+    <End Role="YEUTHICH" Type="Self.YEUTHICH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VIDEO">
+        <PropertyRef Name="IDVideo" />
+        <PropertyRef Name="LinkVideo" />
+      </Principal>
+      <Dependent Role="YEUTHICH">
+        <PropertyRef Name="IDVideo" />
+        <PropertyRef Name="LinkVideo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_YT_TK">
+    <End Role="TAIKHOAN" Type="Self.TAIKHOAN" Multiplicity="0..1" />
+    <End Role="YEUTHICH" Type="Self.YEUTHICH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAIKHOAN">
+        <PropertyRef Name="IDTK" />
+      </Principal>
+      <Dependent Role="YEUTHICH">
+        <PropertyRef Name="IDTK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QuanLyCungCapVideoModelStoreContainer">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TAIKHOAN" EntityType="Self.TAIKHOAN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="THANHTOAN" EntityType="Self.THANHTOAN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="THELOAI" EntityType="Self.THELOAI" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VIDEO" EntityType="Self.VIDEO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="YEUTHICH" EntityType="Self.YEUTHICH" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_VD_TL" Association="Self.FK_VD_TL">
+      <End Role="THELOAI" EntitySet="THELOAI" />
+      <End Role="VIDEO" EntitySet="VIDEO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_YEUTHICH_VIDEO" Association="Self.FK_YEUTHICH_VIDEO">
+      <End Role="VIDEO" EntitySet="VIDEO" />
+      <End Role="YEUTHICH" EntitySet="YEUTHICH" />
+    </AssociationSet>
+    <AssociationSet Name="FK_YT_TK" Association="Self.FK_YT_TK">
+      <End Role="TAIKHOAN" EntitySet="TAIKHOAN" />
+      <End Role="YEUTHICH" EntitySet="YEUTHICH" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
