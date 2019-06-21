@@ -1,0 +1,17 @@
+﻿<Window x:Class="QuanLyCungCapVideo.Focus"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuanLyCungCapVideo"
+        xmlns:m="clr-namespace:QuanLyCungCapVideo.UserControl1"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        WindowState="Maximized"
+        Title="Focus" Height="450" Width="800">
+    <Grid>
+        <m:VideoPlay x:Name="Watch" Width="{Binding Path=Width}" Height="{Binding Path=Height}"/>
+        <Button Name="btn" Background="Transparent" BorderThickness="0" Width="40" Height="40" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="Btn_Click"/>
+    </Grid>
+
+</Window>

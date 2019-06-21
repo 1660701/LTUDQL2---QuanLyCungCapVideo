@@ -1,0 +1,451 @@
+﻿<Window x:Class="QuanLyCungCapVideo.SignUp"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuanLyCungCapVideo"
+        mc:Ignorable="d"
+        
+        xmlns:uc="clr-namespace:QuanLyCungCapVideo.UserControl1"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+         Name="SignUpWindow"
+        DataContext="{StaticResource SignUpVM}"
+               
+        Title="SignUp" Height="700" Width="1000">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition  ></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <uc:ControlBarUC Tag="{Binding Title, ElementName=SignUpWindow}"></uc:ControlBarUC>
+        </Grid>
+        <Grid  Grid.Row="1" Background="#FF343434">
+
+            <xctk:Wizard FinishButtonClosesWindow="True">
+                <xctk:WizardPage x:Name="Page1"
+                                 PageType="Interior"
+                             Title=" Chào mừng bạn đến với TUVFilm!"
+                             Foreground="White"
+                             Background="#FF231F20" HeaderBackground="#FF343434"
+                             NextPage="{Binding ElementName=Page2}"
+                             CanSelectNextPage="True"
+                             CanSelectPreviousPage="True">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="15*"/>
+                            <RowDefinition Height="auto" MinHeight="65"/>
+                            <RowDefinition Height="15*"/>
+                            <RowDefinition Height="auto" MinHeight="65"/>
+                            <RowDefinition Height="15*"/>
+                            <RowDefinition Height="auto" MinHeight="65"/>
+                            <RowDefinition Height="15*"/>
+                            <RowDefinition Height="auto" MinHeight="65"/>
+                            <RowDefinition Height="15*"/>
+                            <RowDefinition Height="auto" MinHeight="65"/>
+                            <RowDefinition Height="15*"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="1">
+                            <materialDesign:PackIcon Foreground="Red" Kind="CheckCircleOutline" HorizontalAlignment="Center" VerticalAlignment="Center" Height="50" Width="50" />
+                        </Grid>
+                        <Grid Grid.Row="3">
+                            <Label FontSize="18"  FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Content="ƯU ĐÃI CHO TÀI KHOẢN MỚI"/>
+
+                        </Grid>
+                        <Grid Grid.Row="5">
+                            <DockPanel Margin="293,0,282,0">
+                                <materialDesign:PackIcon Foreground="White" Kind="CheckCircleOutline" Height="40" Width="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <Label FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Content="Bạn sẽ được miễn phí tháng đầu tiên." Width="335"/>
+                            </DockPanel>
+                        </Grid>
+                        <Grid Grid.Row="7">
+                            <DockPanel Margin="293,0,282,0">
+                                <materialDesign:PackIcon Foreground="White" Kind="CheckCircleOutline" Height="40" Width="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <Label FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Content="Ngừng sử dụng dịch vụ bất cứ khi nào " Width="335" Height="44" Margin="0,20,0,20"/>
+                            </DockPanel>
+                        </Grid>
+                        <Grid Grid.Row="9">
+                            <DockPanel Margin="293,0,282,0">
+                                <materialDesign:PackIcon Kind="CheckCircleOutline" Foreground="White" Height="40" Width="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <StackPanel>
+                                    <Label FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Content="Bạn sẽ được tặng 1 gói VIP trong 2 tuần" Width="335"/>
+                                    <Label FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Content="và trở lại gói bình thường mà bạn đã" Width="335"/>
+                                    <Label FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Content="đăng kí." Width="335"/>
+                                </StackPanel>
+                            </DockPanel>
+                        </Grid>
+
+                    </Grid>
+
+                </xctk:WizardPage>
+                <xctk:WizardPage x:Name="Page2"
+                             PageType="Interior"
+                             Title="BƯỚC 2"
+                             NextPage="{Binding ElementName=Page3}"
+                             PreviousPage="{Binding ElementName=Page1}"
+                             CanSelectPreviousPage="True"
+                             CanSelectNextPage="True"
+                              Foreground="White"
+                             Background="#FF231F20" HeaderBackground="#FF343434">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="80" />
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto"/>
+
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0" >
+                            <StackPanel>
+                                <Label FontSize="22" Foreground="White" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center" Content="CHỌN GÓI CƯỚC SỬ DỤNG"></Label>
+                            </StackPanel>
+                        </Grid>
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="180*"/>
+                                <ColumnDefinition Width="165*"/>
+                                <ColumnDefinition Width="165*"/>
+                                <ColumnDefinition Width="165*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Column="0" Grid.Row="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Grid Grid.Row="0">
+                                    <Label HorizontalAlignment="Center" Foreground="White" VerticalAlignment="Center" FontSize="18" Content="Gói đăng kí"></Label>
+                                </Grid>
+                                <Grid Grid.Row="1">
+                                    <Label HorizontalAlignment="Center" Foreground="White" VerticalAlignment="Center" FontSize="18" Content="Giá"></Label>
+                                </Grid>
+                                <Grid Grid.Row="2">
+                                    <Label HorizontalAlignment="Center" Foreground="White" VerticalAlignment="Center" FontSize="18" Content="Thời hạn sử dụng"></Label>
+                                </Grid>
+                                <Grid Grid.Row="3">
+                                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                        <Label HorizontalAlignment="Center" Foreground="White" VerticalAlignment="Center" FontSize="18" Content="              Khuyến mãi khi" Height="37" Width="264"></Label>
+                                        <Label HorizontalAlignment="Center" Foreground="White" VerticalAlignment="Center" FontSize="18" Content="              đăng ký lần đầu" Height="37" Width="264"></Label>
+                                    </StackPanel>
+                                </Grid>
+                                <Grid Grid.Row="4">
+                                    <Label HorizontalAlignment="Center" Foreground="White" VerticalAlignment="Center" FontSize="18" Content="full HD"></Label>
+                                </Grid>
+                            </Grid>
+
+                            <Grid Grid.Column="1">
+                                <ListBox>
+                                    <Grid Height="401" Width="219">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="76*"/>
+                                            <RowDefinition Height="76*"/>
+                                            <RowDefinition Height="76*"/>
+                                            <RowDefinition Height="76*"/>
+                                            <RowDefinition Height="76*"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid Grid.Row="0">
+                                            <Label FontSize="18" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Content="BASIC"></Label>
+                                        </Grid>
+                                        <Grid Grid.Row="1">
+                                            <Label FontSize="18" Foreground="#FFC5BABA" HorizontalAlignment="Center" VerticalAlignment="Center" Content="99.000đ"></Label>
+                                        </Grid>
+                                        <Grid Grid.Row="2">
+                                            <Label FontSize="18" Foreground="#FFC5BABA" HorizontalAlignment="Center" VerticalAlignment="Center" Content="1 tháng"></Label>
+                                        </Grid>
+                                        <Grid Grid.Row="3">
+                                            <Label FontSize="18" Foreground="#FFC5BABA" HorizontalAlignment="Center" VerticalAlignment="Center" Content="5 ngày"></Label>
+                                        </Grid>
+                                        <Grid Grid.Row="4">
+                                            <materialDesign:PackIcon Kind="Check" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="50" Foreground="#FFC5BABA"/>
+                                        </Grid>
+                                    </Grid>
+                                </ListBox>
+                            </Grid>
+                            <Grid Grid.Column="2">
+                                <ListBox >
+                                    <Grid Height="401" Width="219">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="76*"/>
+                                            <RowDefinition Height="76*"/>
+                                            <RowDefinition Height="76*"/>
+                                            <RowDefinition Height="76*"/>
+                                            <RowDefinition Height="76*"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid Grid.Row="0">
+                                            <Label FontSize="18" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Content="STANDARD"></Label>
+                                        </Grid>
+
+                                        <Grid Grid.Row="1">
+                                            <Label FontSize="18" Foreground="#FFC5BABA" HorizontalAlignment="Center" VerticalAlignment="Center" Content="199.000đ"></Label>
+                                        </Grid>
+                                        <Grid Grid.Row="2">
+                                            <Label FontSize="18" Foreground="#FFC5BABA" HorizontalAlignment="Center" VerticalAlignment="Center" Content="6 tháng"></Label>
+                                        </Grid>
+                                        <Grid Grid.Row="3">
+                                            <Label FontSize="18" Foreground="#FFC5BABA" HorizontalAlignment="Center" VerticalAlignment="Center" Content="15 ngày"></Label>
+                                        </Grid>
+                                        <Grid Grid.Row="4">
+                                            <materialDesign:PackIcon Kind="Check" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="50" Foreground="#FFC5BABA"/>
+                                        </Grid>
+                                    </Grid>
+                                </ListBox>
+                            </Grid>
+                            <Grid Grid.Column="3">
+                                <ListBox >
+                                    <Grid Height="401" Width="219">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="76*"/>
+                                            <RowDefinition Height="76*"/>
+                                            <RowDefinition Height="76*"/>
+                                            <RowDefinition Height="76*"/>
+                                            <RowDefinition Height="76*"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid Grid.Row="0">
+                                            <Label FontSize="18" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Content="PREMIUM" Background="{x:Null}"></Label>
+                                        </Grid>
+                                        <Grid Grid.Row="1">
+                                            <Label FontSize="18" Foreground="#FFC5BABA" HorizontalAlignment="Center" VerticalAlignment="Center" Content="499.000"></Label>
+                                        </Grid>
+                                        <Grid Grid.Row="2">
+                                            <Label FontSize="18" Foreground="#FFC5BABA" HorizontalAlignment="Center" VerticalAlignment="Center" Content="1 năm"></Label>
+                                        </Grid>
+                                        <Grid Grid.Row="3">
+                                            <Label FontSize="18" Foreground="#FFC5BABA" HorizontalAlignment="Center" VerticalAlignment="Center" Content="30 ngày"></Label>
+                                        </Grid>
+                                        <Grid Grid.Row="4">
+                                            <materialDesign:PackIcon Kind="Check" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="50" Foreground="#FFC5BABA"/>
+                                        </Grid>
+                                    </Grid>
+                                </ListBox>
+                            </Grid>
+                        </Grid>
+                        <!--<Grid Grid.Row="2" Margin="-10,0,10,1" Grid.RowSpan="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50*"/>
+                                <ColumnDefinition Width="50*"/>
+                                <ColumnDefinition Width="50*"/>
+                                <ColumnDefinition Width="50*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="1" Margin="165,0,10,0">
+                                <CheckBox Name="EnableListBox1" Foreground="#FFF9F9F9" VerticalAlignment="Center" HorizontalAlignment="Center" Height="50" Width="80" Margin="-35,14,35,13" Background="#FFF9F9F9" BorderBrush="White"></CheckBox>
+                            </Grid>
+                            <Grid Grid.Column="2">
+                                <CheckBox Name="EnableListBox2" Foreground="Black" VerticalAlignment="Center" Height="50" HorizontalAlignment="Center" Width="80" Margin="130,10,55,11"></CheckBox>
+                            </Grid>
+                            <Grid Grid.Column="3">
+                                <CheckBox Name="EnableListBox3" Foreground="Black" VerticalAlignment="Center" Height="50" HorizontalAlignment="Center" Width="80" Margin="115,8,75,9"></CheckBox>
+                            </Grid>
+                        </Grid>-->
+                    </Grid>
+                </xctk:WizardPage>
+                <xctk:WizardPage x:Name="Page3"
+                             PageType="Interior"
+                             Title="BƯỚC 3"
+                             NextPage="{Binding ElementName=Page4}"
+                             PreviousPage="{Binding ElementName=Page2}"
+                             CanSelectPreviousPage="True"                             
+                             Background="#FF231F20" HeaderBackground="#FF343434"
+                             CanSelectNextPage="True">
+                    <Grid>
+                        <Grid.RowDefinitions>
+
+                            <RowDefinition Height="70"/>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition />
+
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0" Margin="0,-5,0,5">
+                            <DockPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <materialDesign:PackIcon Foreground="White" Kind="AccountCircleOutline" Height="50" Width="50"/>
+                            </DockPanel>
+                        </Grid>
+                        <Grid Margin="0,65,0,5" Grid.RowSpan="2">
+                            <Label FontSize="18" Foreground="White" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center" Content="BẮT ĐẦU ĐĂNG KÍ"></Label>
+                        </Grid>
+                        <Grid Grid.Row="2">
+                            <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth4" Padding="32" HorizontalAlignment="Center" VerticalAlignment="Top" Height="416" Width="614" Margin="170,0,170,0" >
+                                <Grid>
+                                    <Grid.RowDefinitions>
+
+                                        <RowDefinition Height="280"/>
+                                        <RowDefinition />
+
+                                    </Grid.RowDefinitions>
+                                    <Grid Grid.Row="0">
+                                        <Grid >
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition></ColumnDefinition>
+                                                <ColumnDefinition></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+
+                                            <Grid Grid.Column="0">
+                                                <Grid>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition ></RowDefinition>
+                                                        <RowDefinition ></RowDefinition>
+                                                        <RowDefinition ></RowDefinition>
+
+                                                    </Grid.RowDefinitions>
+                                                    <Grid Grid.Row="0">
+                                                        <TextBox Text="{Binding TenND, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"  Margin="15"  materialDesign:HintAssist.Hint="Tên người dùng" Style="{StaticResource MaterialDesignFloatingHintTextBox}"                               
+                                                             materialDesign:HintAssist.Foreground="Black"
+                                                                materialDesign:TextFieldAssist.UnderlineBrush="Black" >
+                                                        </TextBox>
+                                                    </Grid>
+                                                    <Grid Grid.Row="1">
+                                                        <TextBox Text="{Binding MatKhau, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"  Margin="15"  materialDesign:HintAssist.Hint="Mật khẩu" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                                                 materialDesign:HintAssist.Foreground="Black"
+                                                                 materialDesign:TextFieldAssist.UnderlineBrush="Black">
+                                                        </TextBox>
+                                                    </Grid>
+                                                    <Grid Grid.Row="2">
+                                                        <TextBox Text="{Binding Email, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Margin="15"  materialDesign:HintAssist.Hint="Email" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                                                     materialDesign:HintAssist.Foreground="Black"
+                                                                     materialDesign:TextFieldAssist.UnderlineBrush="Black"/>
+                                                    </Grid>
+
+
+
+                                                </Grid>
+                                            </Grid>
+                                            <Grid Grid.Column="1">
+                                                <Grid>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition ></RowDefinition>
+                                                        <RowDefinition ></RowDefinition>
+                                                        <RowDefinition ></RowDefinition>
+
+                                                    </Grid.RowDefinitions>
+
+                                                    <Grid Grid.Row="0">
+                                                        <ComboBox Text="{Binding GoiCuoc, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Margin="15" materialDesign:HintAssist.Hint="Gói cước" Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                                                              materialDesign:HintAssist.Foreground="Black"
+                                                             materialDesign:TextFieldAssist.UnderlineBrush="Black">
+                                                            <ComboBoxItem ToolTip="1 month, 99000 VND">
+                                                                BASIC
+                                                            </ComboBoxItem>
+                                                            <ComboBoxItem ToolTip="6 months, 399000 VND">
+                                                                STANDARD
+                                                            </ComboBoxItem>
+                                                            <ComboBoxItem ToolTip="1 year, 599000 VND">
+                                                                PREMIUM
+                                                            </ComboBoxItem>
+
+                                                        </ComboBox>
+                                                    </Grid>
+                                                    <Grid Grid.Row="1">
+                                                        <ComboBox Text="{Binding HTTT, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Margin="15" materialDesign:HintAssist.Hint="Hình thức thanh toán" Style="{StaticResource MaterialDesignFloatingHintComboBox}" Grid.ColumnSpan="2"
+                                                                     materialDesign:HintAssist.Foreground="Black"
+                                                                    materialDesign:TextFieldAssist.UnderlineBrush="Black">
+                                                            <ComboBoxItem >
+                                                                Credit Card
+                                                            </ComboBoxItem>
+                                                            <ComboBoxItem >
+                                                                MoMo
+                                                            </ComboBoxItem>
+                                                            <ComboBoxItem >
+                                                                Thẻ cào điện thoại
+                                                            </ComboBoxItem>
+                                                        </ComboBox>
+                                                    </Grid>
+                                                    <Grid Grid.Row="2">
+                                                        <TextBox Text="{Binding DienThoai, UpdateSourceTrigger=PropertyChanged}" Margin="15"  materialDesign:HintAssist.Hint="Số điện thoại" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                                                  materialDesign:HintAssist.Foreground="Black"
+                                                                  materialDesign:TextFieldAssist.UnderlineBrush="Black"/>
+                                                    </Grid>
+
+                                                </Grid>
+
+                                            </Grid>
+                                        </Grid>
+
+                                    </Grid>
+                                    <Grid Grid.Row='1'>
+                                        <Grid Grid.Row="4" Margin="0,10,0,0">
+                                            <Button Command="{Binding GoiCuocCommand}"
+                                                            CommandParameter="{Binding ElementName=SignUpWindow}"
+                                                            Background="#FF231F20" Width="140" Height="40" 
+                                                            materialDesign:ShadowAssist.ShadowDepth="Depth4"
+                                                            VerticalAlignment="Center" Style="{StaticResource MaterialDesignRaisedButton}" >
+                                                <TextBlock Style="{StaticResource MaterialDesignTitleTextBlock}">
+                                                            Đăng Ký
+                                                </TextBlock>
+                                            </Button>
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
+                            </materialDesign:Card>
+
+                        </Grid>
+                    </Grid>
+                </xctk:WizardPage>
+                <xctk:WizardPage x:Name="Page4"
+                             PageType="Interior"
+                             Title="BƯỚC 4"
+                             NextPage="{Binding ElementName=Page5}"
+                             PreviousPage="{Binding ElementName=Page3}"
+                             CanSelectPreviousPage="True"
+                             CanSelectNextPage="True"
+                                 Foreground="White"
+                             Background="#FF231F20" HeaderBackground="#FF343434"
+                             CanFinish="True">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="60"/>
+                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="90"/>
+                            <RowDefinition Height="100"/>
+
+                            <RowDefinition Height="15*"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="1">
+                            <materialDesign:PackIcon Kind="Check" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Height="90" Width="90" />
+                        </Grid>
+                        <Grid Grid.Row="2">
+                            <Label FontSize="18" Foreground="White" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center" Content="ĐĂNG KÍ HOÀN TẤT"></Label>
+                        </Grid>
+                        <Grid Grid.Row="3">
+                            <StackPanel>
+                                <Label FontSize="18" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Bạn đã hoàn thành tất cả các bước đăng ký "></Label>
+                                <Label FontSize="18" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Hãy đăng nhập và tận hưởng những bộ phim bom tấn"></Label>
+                                <Label FontSize="18" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Chúc các bạn xem phim vui vẻ!"></Label>
+                            </StackPanel>
+                        </Grid>
+                        <Grid Grid.Row="7">
+                            <Button Style="{DynamicResource MaterialDesignRaisedButton}"
+                                    materialDesign:ShadowAssist.ShadowDepth="Depth4" 
+                                    BorderBrush="White" 
+                                    Background="#FF231F20" 
+                                    IsDefault="True"
+                                    Width="300"
+                                    Height="100">
+                                <TextBlock Style="{StaticResource MaterialDesignHeadlineTextBlock}">
+                                        HOÀN THÀNH ĐĂNG KÝ
+                                </TextBlock>
+                            </Button>
+                        </Grid>
+                    </Grid>
+                </xctk:WizardPage>
+            </xctk:Wizard>
+        </Grid>
+    </Grid>
+
+</Window>
