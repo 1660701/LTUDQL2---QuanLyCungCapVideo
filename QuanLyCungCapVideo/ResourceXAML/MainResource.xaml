@@ -1,0 +1,20 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+                     xmlns:viewmodel="clr-namespace:QuanLyCungCapVideo.ViewModel"
+                    xmlns:local="clr-namespace:QuanLyCungCapVideo.ResourceXAML">
+    <viewmodel:MainViewModel x:Key="MainVM"></viewmodel:MainViewModel>
+    <viewmodel:LoginViewModel x:Key="LoginVM"></viewmodel:LoginViewModel>
+    <viewmodel:AccountManagementViewModel x:Key="AccountManagementVM"></viewmodel:AccountManagementViewModel>
+    <viewmodel:TaiKhoanViewModel x:Key="TaiKhoanVM"></viewmodel:TaiKhoanViewModel>
+    <viewmodel:ChangePasswordViewModel x:Key="ChangePasswordVM"></viewmodel:ChangePasswordViewModel>
+    <viewmodel:SignUpViewModel x:Key="SignUpVM"></viewmodel:SignUpViewModel>
+    <viewmodel:GoiCuocViewModel x:Key="GoiCuocVM"></viewmodel:GoiCuocViewModel>
+    <viewmodel:QuanLyVideoViewModel x:Key="QLVVM"></viewmodel:QuanLyVideoViewModel>
+    <viewmodel:AdminViewModel x:Key="AdminVM"></viewmodel:AdminViewModel>
+    <viewmodel:LSThanhToanViewModel x:Key="LSTTVM"></viewmodel:LSThanhToanViewModel>
+    <viewmodel:QuanLyTheLoaiViewModel x:Key="QLTLVM"></viewmodel:QuanLyTheLoaiViewModel>
+    <viewmodel:ForgetPassViewModel x:Key="PFVW"></viewmodel:ForgetPassViewModel>
+    <viewmodel:QuanLyThanhToanViewModel x:Key="QLTTVW"></viewmodel:QuanLyThanhToanViewModel>
+
+</ResourceDictionary>

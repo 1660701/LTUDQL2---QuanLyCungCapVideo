@@ -1,0 +1,94 @@
+﻿<Window x:Class="QuanLyCungCapVideo.QuanLyVideo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuanLyCungCapVideo"
+        
+        xmlns:uc="clr-namespace:QuanLyCungCapVideo.UserControl1"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        x:Name="window"
+        DataContext="{StaticResource QLVVM}"
+        
+        mc:Ignorable="d"
+        Title="QuanLyVideo" Height="700" Width="900">
+    <Grid RenderTransformOrigin="0.478,0.617">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" ></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <uc:ControlBarUC Tag="{Binding Title, ElementName=window}"></uc:ControlBarUC>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <!--các element binding từ selected item-->
+            <materialDesign:Card Grid.Row="0" Margin="5">
+                <WrapPanel Margin="0 0 0 10">
+                    <TextBox Width="300" Text="{Binding TenVideo, UpdateSourceTrigger=PropertyChanged}" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Tên Video" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <ComboBox Margin="5 5 15 5" DisplayMemberPath="TenTL" ItemsSource="{Binding IDTL}" SelectedItem="{Binding SelectedIDTL, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Thể loại" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}"></ComboBox>
+                    <TextBox  Text="{Binding QuocGia, UpdateSourceTrigger=PropertyChanged}" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Quốc gia" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <TextBox  Text="{Binding DaoDien, UpdateSourceTrigger=PropertyChanged}" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Đạo Diễn" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <TextBox Text="{Binding LuotXem, UpdateSourceTrigger=PropertyChanged}" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Lượt Xem" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <TextBox Width="880" Text="{Binding TomTat, UpdateSourceTrigger=PropertyChanged}" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Tóm tắt" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <TextBox Width="880" Text="{Binding LinkVideo, UpdateSourceTrigger=PropertyChanged}" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Link Video" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <TextBox Width="880" Text="{Binding LinkPoster, UpdateSourceTrigger=PropertyChanged}" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Link Poster" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <TextBox Width="880" Text="{Binding Trailer, UpdateSourceTrigger=PropertyChanged}" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Link Trailer" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <!--<ComboBox Margin="5 5 15 5" ItemsSource="{Binding Plan}" SelectedItem="{Binding SelectedUnit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Gói Cước" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}"></ComboBox>-->
+                </WrapPanel>
+            </materialDesign:Card>
+
+            <materialDesign:Card Grid.Row="1" Margin="5">
+                <WrapPanel>
+                    <Button Background="#FF231F20" Command="{Binding AddCommand}" Content="Thêm" Margin="5" Width="100"></Button>
+                    <ProgressBar Value="{Binding AddCommand}"  Style="{StaticResource MaterialDesignCircularProgressBar}" x:Name="DeterminateCircularProgress" />
+                    <Button Background="#FF231F20" Command="{Binding EditCommand}" Content="Sửa" Margin="5" Width="100"></Button>
+                    <Button Background="#FF231F20" Command="{Binding DeleteCommand}" Content="Xóa" Margin="5" Width="100"></Button>
+                    <Button Background="#FF231F20" Command="{Binding LVCommand}" Content="Lấy LinkVideo" Margin="5" Width="120"></Button>
+                    <Button Background="#FF231F20" Command="{Binding LPCommand}" Content="Lấy LinkPoster" Margin="5" Width="130"></Button>
+                    <Button Background="#FF231F20" Command="{Binding LTCommand}" Content="Lấy LinkTrailer" Margin="5" Width="130"></Button>
+
+
+                </WrapPanel>
+            </materialDesign:Card>
+
+            <materialDesign:Card Grid.Row="2" Margin="20" VerticalAlignment="Stretch">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                    <ListView ItemsSource="{Binding List}" SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}">
+                        <ListView.View>
+                            <GridView >
+                                <GridViewColumn Header="Id" DisplayMemberBinding="{Binding IDVideo}"></GridViewColumn>
+                                <GridViewColumn Header="Tên Video" DisplayMemberBinding="{Binding TenVideo}"></GridViewColumn>
+                                <GridViewColumn Header="ID Thể Loại" DisplayMemberBinding="{Binding IDTL}"></GridViewColumn>
+                                <GridViewColumn Header="Quốc Gia" DisplayMemberBinding="{Binding QuocGia}"></GridViewColumn>
+                                <GridViewColumn Header="Tóm tắt" DisplayMemberBinding="{Binding TomTat}"></GridViewColumn>
+                                <GridViewColumn Header="Đạo diễn" DisplayMemberBinding="{Binding DaoDien}"></GridViewColumn>
+                                <GridViewColumn Header="Lượt Xem" DisplayMemberBinding="{Binding LuotXem}"></GridViewColumn>
+                                <GridViewColumn Header="Link Video" DisplayMemberBinding="{Binding LinkVideo}"></GridViewColumn>
+                                <GridViewColumn Header="Link Poster" DisplayMemberBinding="{Binding LinkPoster}"></GridViewColumn>
+                                <GridViewColumn Header="Link TraiLer" DisplayMemberBinding="{Binding Trailer}"></GridViewColumn>
+
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </ScrollViewer>
+            </materialDesign:Card>
+        </Grid>
+    </Grid>
+
+</Window>

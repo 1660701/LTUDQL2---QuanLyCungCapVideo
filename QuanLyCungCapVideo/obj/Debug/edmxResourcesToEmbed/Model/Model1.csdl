@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QuanLyCungCapVideoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TAIKHOAN">
+    <Key>
+      <PropertyRef Name="IDTK" />
+    </Key>
+    <Property Name="IDTK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenND" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MatKhau" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DienThoai" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IDQuyen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="THANHTOAN">
+    <Key>
+      <PropertyRef Name="IDThanhToan" />
+    </Key>
+    <Property Name="IDThanhToan" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HTTT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NgayTT" Type="DateTime" Precision="3" />
+    <Property Name="NgayKT" Type="DateTime" Precision="3" />
+    <Property Name="GoiCuoc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TenND" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="THELOAI">
+    <Key>
+      <PropertyRef Name="IDTL" />
+    </Key>
+    <Property Name="IDTL" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenTL" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="VIDEOs" Relationship="Self.FK_VD_TL" FromRole="THELOAI" ToRole="VIDEO" />
+  </EntityType>
+  <EntityType Name="VIDEO">
+    <Key>
+      <PropertyRef Name="IDVideo" />
+    </Key>
+    <Property Name="IDVideo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenVideo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IDTL" Type="Int32" />
+    <Property Name="QuocGia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DaoDien" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LuotXem" Type="Int32" />
+    <Property Name="LinkVideo" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="LinkPoster" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="TomTat" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Trailer" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="THELOAI" Relationship="Self.FK_VD_TL" FromRole="VIDEO" ToRole="THELOAI" />
+  </EntityType>
+  <EntityType Name="YEUTHICH">
+    <Key>
+      <PropertyRef Name="IDYT" />
+    </Key>
+    <Property Name="IDYT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LinkVideo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="LinkPoster" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="TenND" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TenVideo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="QuocGia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DaoDien" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LuotXem" Type="Int32" />
+    <Property Name="TomTat" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_VD_TL">
+    <End Role="THELOAI" Type="Self.THELOAI" Multiplicity="0..1" />
+    <End Role="VIDEO" Type="Self.VIDEO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="THELOAI">
+        <PropertyRef Name="IDTL" />
+      </Principal>
+      <Dependent Role="VIDEO">
+        <PropertyRef Name="IDTL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QuanLyCungCapVideoEntities15" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="TAIKHOANs" EntityType="Self.TAIKHOAN" />
+    <EntitySet Name="THANHTOANs" EntityType="Self.THANHTOAN" />
+    <EntitySet Name="THELOAIs" EntityType="Self.THELOAI" />
+    <EntitySet Name="VIDEOs" EntityType="Self.VIDEO" />
+    <EntitySet Name="YEUTHICHes" EntityType="Self.YEUTHICH" />
+    <AssociationSet Name="FK_VD_TL" Association="Self.FK_VD_TL">
+      <End Role="THELOAI" EntitySet="THELOAIs" />
+      <End Role="VIDEO" EntitySet="VIDEOs" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
